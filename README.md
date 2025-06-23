@@ -80,7 +80,7 @@ UWR is a submarine-style underwater robot designed for both remote-controlled an
 
 ## Acknowledgments
 
-- Shell design: [Your Name]
+- Shell design: Adithya Pothula
 - Other components: Sourced from GrabCAD
 
 ---
