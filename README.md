@@ -3,9 +3,11 @@
 
 ## Overview
 
-UWR is a submarine-style underwater robot designed for both remote-controlled and autonomous operation. The project features a custom 3D-printed shell (original work) and an assembly of open-source components, integrating advanced sensors, a camera, and automated buoyancy control for stable underwater navigation.
+UWR is a submarine-style underwater robot designed for both remote-controlled and autonomous operation. The project features a custom 3D-modelled shell (original work) and an assembly of open-source components, integrating advanced sensors, a camera, and automated buoyancy control for stable underwater navigation.
 
 ---
+![image](https://github.com/user-attachments/assets/a073c23d-44c6-49d4-87e3-897aa0eb13fe)
+
 
 ## Repository Structure
 
