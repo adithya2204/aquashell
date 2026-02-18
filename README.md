@@ -1,6 +1,11 @@
 # aquashell
  A multi-mode underwater robot featuring a custom-designed shell and an assembly of open-source components. This project combines remote-controlled and autonomous operation, integrating advanced sensors (pressure, temperature, gyroscope), a camera, and automated buoyancy adjustment for stable underwater navigation. Powered by Raspberry Pi 4 and Arduino UNO, the robot utilizes ROS for multi-node task management and LiFi communication for reliable data transfer underwater. Designed with ABS for robust, watertight construction, the system is suitable for marine research, inspection, environmental monitoring, and educational applications. The shell is original work; other mechanical components are sourced from GrabCAD
 
+## Project Status
+
+This project represents an exploratory design study and is not under active development.  
+It is preserved here as a reference for mechanical design, system integration concepts, and early experimentation with underwater robotic platforms.
+
 ## Overview
 
 UWR is a submarine-style underwater robot designed for both remote-controlled and autonomous operation. The project features a custom 3D-modelled shell (original work) and an assembly of open-source components, integrating advanced sensors, a camera, and automated buoyancy control for stable underwater navigation.
