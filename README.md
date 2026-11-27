@@ -18,9 +18,15 @@ A submarine-style underwater robot designed for both remote-controlled and auton
 | Power | 12 V, 10,000 mAh (two batteries in parallel) |
 | Propulsion | two brushless (BLDC) thrusters with 30 A Electronic Speed Controllers (ESCs) |
 | Buoyancy | linear actuators driving 100 ml syringes as ballast |
-| Sensing | pressure (depth), temperature, Inertial Measurement Unit (IMU, MPU-9255), OV5647 camera |
+| Sensing | pressure (depth), temperature, pH, Inertial Measurement Unit (IMU, MPU-9255), OV5647 camera |
 | Underwater link | Light Fidelity (LiFi) Nano-V2 module |
 | Software | Robot Operating System (ROS), multi-node |
+
+### System block diagram
+
+The Raspberry Pi 4 handles sensing, the camera and the LiFi link. It commands the Arduino, which drives the two thruster ESCs and the two ballast actuators.
+
+![System block diagram](images/block-diagram.png)
 
 ## How it moves
 
@@ -30,6 +36,12 @@ A submarine-style underwater robot designed for both remote-controlled and auton
 | Turning | differential thruster speeds |
 | Diving / surfacing | linear actuators draw water into or push it out of the syringe ballast |
 | Stability | IMU for orientation, pressure sensor for depth hold |
+
+![Front view with thrusters, camera and LEDs](images/front-view.png)
+
+Inside the hull, the linear actuator turns a lead screw that draws water into, or pushes it out of, the syringe ballast to dive or surface:
+
+![Side cross-section showing the internal layout](images/cross-section.png)
 
 ![Front, top, side and isometric views](submarine%20assembly/total%20isometric.PNG)
 
@@ -57,6 +69,7 @@ aquashell/
 │   │   UNO R4 WiFi.step          # GrabCAD component models
 │   └── total isometric.PNG       # drawing sheet with the four views
 ├── old try/                      # earlier hull and thruster-housing attempts
+├── images/                       # figures for this README (from the project report)
 └── docs/
     └── aquashell-project-report.pdf
 ```
