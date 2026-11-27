@@ -1,93 +1,73 @@
-# aquashell
- A multi-mode underwater robot featuring a custom-designed shell and an assembly of open-source components. This project combines remote-controlled and autonomous operation, integrating advanced sensors (pressure, temperature, gyroscope), a camera, and automated buoyancy adjustment for stable underwater navigation. Powered by Raspberry Pi 4 and Arduino UNO, the robot utilizes ROS for multi-node task management and LiFi communication for reliable data transfer underwater. Designed with ABS for robust, watertight construction, the system is suitable for marine research, inspection, environmental monitoring, and educational applications. The shell is original work; other mechanical components are sourced from GrabCAD
+# AquaShell: Underwater Robot (UWR) Design Study
 
-## Project Status
+A submarine-style underwater robot designed for both remote-controlled and autonomous operation. The **hull (shell) is an original design**. The electronics and actuators in the assembly are open-source CAD models from GrabCAD, placed to check fit and layout.
 
-This project represents an exploratory design study and is not under active development.  
-It is preserved here as a reference for mechanical design, system integration concepts, and early experimentation with underwater robotic platforms.
+![AquaShell isometric render](https://github.com/user-attachments/assets/a073c23d-44c6-49d4-87e3-897aa0eb13fe)
 
-## Overview
-
-UWR is a submarine-style underwater robot designed for both remote-controlled and autonomous operation. The project features a custom 3D-modelled shell (original work) and an assembly of open-source components, integrating advanced sensors, a camera, and automated buoyancy control for stable underwater navigation.
-
----
-![image](https://github.com/user-attachments/assets/a073c23d-44c6-49d4-87e3-897aa0eb13fe)
-
-
-## Repository Structure
-
-- **submarine assembly/**  
-  Main assembly files for the UWR robot (custom shell, GrabCAD components).
-- **/old_try/**  
-  Early prototypes and design attempts.
+> **Status:** an exploratory mechanical and system-design study, not under active development. It is kept as a reference for hull design, component packaging and buoyancy-control concepts. The full write-up is in [`docs/aquashell-project-report.pdf`](docs/aquashell-project-report.pdf).
 
 ---
 
-## Technical Specifications
+## Specifications
 
-- **Dimensions:** 500 mm (L) × 350 mm (W) × 104 mm (H)
-- **Processing Units:** Raspberry Pi 4, Arduino UNO
-- **Power Supply:** 12V 10,000 mAh (2 batteries in parallel)
-- **Material:** ABS (3D-printed for strength and water resistance)
-- **Software:** ROS (Robot Operating System), multi-node configuration
+| Item | Value |
+|---|---|
+| Dimensions | 500 mm (L) × 350 mm (W) × 104 mm (H) |
+| Hull material | ABS, 3D-printed |
+| Compute | Raspberry Pi 4 and Arduino UNO |
+| Power | 12 V, 10,000 mAh (two batteries in parallel) |
+| Propulsion | two brushless (BLDC) thrusters with 30 A Electronic Speed Controllers (ESCs) |
+| Buoyancy | linear actuators driving 100 ml syringes as ballast |
+| Sensing | pressure (depth), temperature, Inertial Measurement Unit (IMU, MPU-9255), OV5647 camera |
+| Underwater link | Light Fidelity (LiFi) Nano-V2 module |
+| Software | Robot Operating System (ROS), multi-node |
 
----
+## How it moves
 
-## Key Features
+| Motion | Method |
+|---|---|
+| Forward / backward | thruster rotation direction |
+| Turning | differential thruster speeds |
+| Diving / surfacing | linear actuators draw water into or push it out of the syringe ballast |
+| Stability | IMU for orientation, pressure sensor for depth hold |
 
-- Pressure, temperature, and depth sensors
-- Automated buoyancy adjustment for stable positioning
-- Manual and autonomous operation modes
-- Real-time video feedback via camera module (OV5647)
-- Robust mechanical structure with thrusters and actuators
-- LiFi Nano-V2 module for underwater communication
+![Front, top, side and isometric views](submarine%20assembly/total%20isometric.PNG)
 
----
+## Design process
 
-## Methodology
-
-1. Concept design and 3D modeling
+1. Concept design and 3D modelling of the hull (SolidWorks)
 2. Electronic circuit design (EasyEDA)
 3. Component selection and procurement
 4. Circuit assembly and programming
-5. Mechanical assembly and optimization
+5. Mechanical assembly and optimisation
 6. Logic testing and integration
 
 ---
 
-## Motion and Buoyancy Control
+## Repository layout
 
-- **Forward/Backward:** Propeller rotation direction
-- **Turning:** Differential propeller speeds
-- **Buoyancy:** Linear actuators adjust syringes for fluid control
-- **Stability:** Gyroscope for orientation; pressure sensor for depth
+```
+aquashell/
+├── submarine assembly/           # SolidWorks assembly and parts
+│   ├── total body assembly.SLDASM    # top-level assembly
+│   ├── total body.SLDPRT             # the original hull
+│   ├── ballast_assembly.SLDASM       # syringe + actuator ballast
+│   ├── base, battery, lens, lights, Thruster Motor, Actuator, Syringe_100ml …
+│   ├── Raspberry Pi 4 Model B.SLDASM, MPU-9255.SLDASM, HGLRC 30A Brushless ESC.SLDASM,
+│   │   UNO R4 WiFi.step          # GrabCAD component models
+│   └── total isometric.PNG       # drawing sheet with the four views
+├── old try/                      # earlier hull and thruster-housing attempts
+└── docs/
+    └── aquashell-project-report.pdf
+```
 
----
+Open `submarine assembly/total body assembly.SLDASM` in SolidWorks to load the full robot. The folder and file names are left unchanged, because the assemblies find their parts by path.
 
-## Main Components
+## Possible applications
 
-- **Shell:** Custom-designed (original)
-- **Other parts:** Sourced from GrabCAD
-- **Sensors:** Pressure, temperature, gyroscope, camera
-- **Actuators:** BLDC motors, linear actuators
-- **Communication:** LiFi for underwater data transfer
+Marine research and data collection, underwater inspection and maintenance, environmental monitoring (water quality, pollution), archaeology (site survey), mine inspection, and locating fish shoals.
 
----
+## Credits
 
-## Applications
-
-- Marine research and data collection
-- Underwater inspection and maintenance
-- Military and defense (e.g., mine inspection)
-- Archaeology (site exploration and mapping)
-- Environmental monitoring (water quality, pollution)
-- Fishing industry (locating fish shoals)
-
----
-
-## Acknowledgments
-
-- Shell design: Adithya Pothula
-- Other components: Sourced from GrabCAD
-
----
+- Hull design: **Adithya Pothula**
+- Electronics and actuator models: third-party models from [GrabCAD](https://grabcad.com/library), which remain under their authors' terms
